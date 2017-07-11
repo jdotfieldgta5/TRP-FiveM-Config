@@ -1,0 +1,76 @@
+ListenPort: 30120
+
+PreParseResources:
+    - mapmanager
+
+AutoStartResources:
+    - chat
+    - spawnmanager
+    - fivem-map-skater
+# - baseevents
+    - rconlog
+    - hardcap # prevents the game from breaking
+    - scoreboard
+    - SleekLoad
+    - bs-perms
+#   - bs-perms-api
+    - bs-perms-json
+    - bs-admin
+    - vrp
+    - vrp_basic_mission
+    - news
+    - twitter
+    - indicators
+    - handling
+#   - RPDeath
+#   - es_bank
+#   - es_holdup
+    #- HospitalHeal
+    - lscustoms
+    - NeverWanted
+    - ooc
+#   - voip_blip
+#   - StreetDisplay
+    - timesync
+#   - vehshop    
+    - gdn_dropwep
+    - frfuel
+#   - drag
+    #- LockDoors
+    - LockSystem
+    - modelblacklist
+    - NoCarJack
+#   - playerblips
+    - SimpleFine
+    - sirencontrols
+    - revive
+    - EngineToggle
+    - msq-directions-hud
+#   - model-menu
+#   - commands
+    - fishing
+    - clothes
+# do change
+RconPassword: C4mbr1dg3
+
+# configure this, please
+Hostname: ^3Transendence ^4RP ^0[Development Server]
+
+ScriptDebug: true
+
+DebugLog: true
+
+# set to false to hide from the online server list
+Announce: true
+
+# set to false to require players to be signed in to Steam
+DisableAuth: true
+
+# set to true to disable local script hook plugins
+DisableScriptHook: true
+
+# uncomment and set to the path of an icon to use in the server browser. it should be square.
+#ServerIcon: hello.png
+
+# don't try enabling this
+#UseGameServerV2: true

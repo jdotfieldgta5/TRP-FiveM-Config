@@ -1,0 +1,137 @@
+By 'Change This' you can do copy&paste or you can just read and copy&paste what has -- jail addon behind.
+
+Put following steps into the file: menupolice.lua
+
+------
+STEP 1
+------
+
+Add this between 'buttonsCitizen[#buttonsCitizen+1] = {name = txt[config.lang]["menu_force_player_get_out_car_title"], description = ''}' 
+and 'buttonsCitizen[#buttonsCitizen+1] = {name = txt[config.lang]["menu_drag_player_title"], description = ''}':
+
+buttonsCitizen[#buttonsCitizen+1] = {name = txt[config.lang]["menu_put_in_jail_title"], description = ''} -- jail addon
+		
+------
+STEP 2
+------
+
+Add this after the line from step 1
+
+		-- jail addon
+		[txt[config.lang]["menu_arrest_title"]] = {
+			title = txt[config.lang]["menu_arrest_title"],
+			name = txt[config.lang]["menu_arrest_title"],
+			buttons = {
+				{name = "1 Minute", description = ''},
+				{name = "2 Minutes", description = ''},
+				{name = "3 Minutes", description = ''},
+				{name = "4 Minutes", description = ''},
+				{name = "5 Minutes", description = ''},
+				{name = "6 Minutes", description = ''},
+				{name = "7 Minutes", description = ''},
+				{name = "8 Minutes", description = ''},
+				{name = "9 Minutes", description = ''},
+				{name = "10 Minutes", description = ''},
+			}
+		},
+		-- jail addon end
+		
+------
+STEP 3
+------
+
+Replace this:
+
+	elseif this == txt[config.lang]["menu_citizens_title"] then
+		if btn == txt[config.lang]["menu_fines_title"] then
+			OpenMenuPolice(txt[config.lang]["menu_fines_title"])
+		elseif btn == txt[config.lang]["menu_check_inventory_title"] then
+			CheckInventory()
+		elseif btn == txt[config.lang]["menu_toggle_cuff_title"] then
+			ToggleCuff()
+		elseif btn == txt[config.lang]["menu_force_player_get_in_car_title"] then
+			PutInVehicle()
+		elseif btn == txt[config.lang]["menu_force_player_get_out_car_title"] then
+			UnseatVehicle()
+		elseif btn == txt[config.lang]["menu_drag_player_title"] then
+			DragPlayer()
+		elseif btn == txt[config.lang]["menu_id_card_title"] then
+			CheckId()
+		end
+		
+With this:
+
+	elseif this == txt[config.lang]["menu_citizens_title"] then
+		if btn == txt[config.lang]["menu_fines_title"] then
+			OpenMenuPolice(txt[config.lang]["menu_fines_title"])
+		elseif btn == txt[config.lang]["menu_check_inventory_title"] then
+			CheckInventory()
+		elseif btn == txt[config.lang]["menu_toggle_cuff_title"] then
+			ToggleCuff()
+		elseif btn == txt[config.lang]["menu_force_player_get_in_car_title"] then
+			PutInVehicle()
+		elseif btn == txt[config.lang]["menu_force_player_get_out_car_title"] then
+			UnseatVehicle()
+		-- jail addon
+		elseif btn == txt[config.lang]["menu_put_in_jail_title"] then
+			OpenMenuPolice(txt[config.lang]["menu_arrest_title"])
+		-- jail addon
+		elseif btn == txt[config.lang]["menu_drag_player_title"] then
+			DragPlayer()
+		elseif btn == txt[config.lang]["menu_id_card_title"] then
+			CheckId()
+		end
+		
+------
+STEP 4
+------
+
+Paste below step 3:
+
+	-- jail addon
+	elseif this == txt[config.lang]["menu_arrest_title"] then
+		if btn == "1 Minute" then
+			Arrest(60)
+		elseif btn == "2 Minutes" then
+			Arrest(120)
+		elseif btn == "3 Minutes" then
+			Arrest(180)
+		elseif btn == "4 Minutes" then
+			Arrest(240)
+		elseif btn == "5 Minutes" then
+			Arrest(300)
+		elseif btn == "6 Minutes" then
+			Arrest(360)
+		elseif btn == "7 Minutes" then
+			Arrest(420)
+		elseif btn == "8 Minutes" then
+			Arrest(480)
+		elseif btn == "9 Minutes" then
+			Arrest(540)
+		elseif btn == "10 Minutes" then
+			Arrest(600)
+		end
+	-- jail addon end
+		
+------
+STEP 5
+------
+
+Add this into line: 309
+
+-- jail addon
+function Arrest(amount)
+	t, distance = GetClosestPlayer()
+	if(distance ~= -1 and distance < 3) then
+		TriggerServerEvent('jail:teleportToJail', GetPlayerServerId(t), amount)
+	else
+		TriggerEvent('chatMessage', txt[config.lang]["title_notification"], {0,0,0}, txt[config.lang]["no_player_near_ped"])
+	end
+end
+-- jail addon end
+
+------
+STEP 6
+------
+
+Take a look in the 'server.txt'.

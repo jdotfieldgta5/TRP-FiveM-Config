@@ -1,0 +1,89 @@
+By 'Change This' you can do copy&paste or you can just read and copy&paste what has -- jail addon behind.
+
+Put following steps into the file: client.lua
+
+------
+STEP 1
+------
+
+Add this to line: 15
+Between 'local handCuffed = false' and 'local isAlreadyDead = false'
+
+-- jail addon
+local isHandCuffed = false -- Don't touch!
+-- Jail addon end
+
+------
+STEP 2
+------
+
+Add this to line: 71
+
+-- jail addon
+RegisterNetEvent('jail:teleportPlayer')
+AddEventHandler('jail:teleportPlayer', function(amount)
+	if(isHandCuffed == true) then
+		SetEntityCoords(GetPlayerPed(-1), tonumber(config.jail.pos_x), tonumber(config.jail.pos_y), tonumber(config.jail.pos_z))
+
+		TriggerEvent('chatMessage', txt[config.lang]["title_notification"], {0,0,0}, txt[config.lang]["jail_arrest_notification_part_1"] .. amount .. txt[config.lang]["jail_arrest_notification_part_2"])
+
+		Citizen.CreateThread(function()
+			while (amount > 0) do
+				Citizen.Wait(1000)
+				amount = amount - 1
+			end
+
+			-- Remove Weapons
+			RemoveAllPedWeapons(GetPlayerPed(-1))
+			TriggerEvent('chatMessage', txt[config.lang]["title_notification"], {0,0,0}, txt[config.lang]["jail_weapons_removed"])
+
+			-- Arrest
+			TriggerEvent('police:getArrested', t)
+		end)
+	else
+		TriggerEvent('chatMessage', source, txt[config.lang]["title_notification"], {0,0,0}, txt[config.lang]["jail_not_cuffed"])
+	end
+end)
+-- jail addon end
+
+------
+STEP 3
+------
+
+Replace this:
+
+RegisterNetEvent('police:getArrested')
+AddEventHandler('police:getArrested', function()
+	if((isCop == false and config.useCopWhitelist == true) or config.useCopWhitelist == false) then
+		handCuffed = not handCuffed
+		if(handCuffed) then
+			TriggerEvent("police:notify",  "CHAR_ANDREAS", 1, txt[config.lang]["title_notification"], false, txt[config.lang]["now_cuffed"])
+		else
+			TriggerEvent("police:notify",  "CHAR_ANDREAS", 1, txt[config.lang]["title_notification"], false, txt[config.lang]["now_uncuffed"])
+			drag = false
+		end
+	end
+end)
+
+To this:
+
+RegisterNetEvent('police:getArrested')
+AddEventHandler('police:getArrested', function()
+	if((isCop == false and config.useCopWhitelist == true) or config.useCopWhitelist == false) then
+		handCuffed = not handCuffed
+		if(handCuffed) then
+			TriggerEvent("police:notify",  "CHAR_ANDREAS", 1, txt[config.lang]["title_notification"], false, txt[config.lang]["now_cuffed"])
+			isHandCuffed = true -- jail addon
+		else
+			TriggerEvent("police:notify",  "CHAR_ANDREAS", 1, txt[config.lang]["title_notification"], false, txt[config.lang]["now_uncuffed"])
+			isHandCuffed = false -- jail addon
+			drag = false
+		end
+	end
+end)
+
+------
+STEP 4
+------
+
+Take a look in the menupolice.txt

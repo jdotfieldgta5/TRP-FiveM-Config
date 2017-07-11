@@ -1,0 +1,80 @@
+------
+STEP 1
+------
+
+Add this below the '--Use by job system':
+
+	--Use by job system								-- DON'T ADD THIS
+	job = {											-- DON'T ADD THIS
+		officer_on_duty_job_id = 2,					-- DON'T ADD THIS
+		officer_not_on_duty_job_id = 7,				-- DON'T ADD THIS
+	}, 												-- DON'T ADD THIS // ONLY DO THE , (COMMA) BEHIND THE }
+
+	-- Jail addon jail coordinations
+	jail = {
+		pos_x = "459.87243652344",
+		pos_y = "-994.15130615234",
+		pos_z = "24.914875030518",
+	}
+
+------
+STEP 2
+------
+------------------
+FRENCH TRANSLATION
+------------------
+
+Add this after the line: 63
+
+		menu_put_in_jail_title = "Mettre en prison", -- jail addon
+		menu_arrest_title = "Arrêter", -- jail addon
+
+------
+STEP 3
+------
+------------------
+FRENCH TRANSLATION
+------------------
+
+Add this after the line: 84
+
+		-- jail addon
+		jail_arrest_notification_part_1 = "Vous etes arrêté pour ^1", -- send to the client after he got puted into the jail
+		jail_arrest_notification_part_2 = " seconds!",
+		jail_weapons_removed = "Votre armes etes supprimé parce que vous avez arrêté dans le prison!",
+		jail_not_cuffed = "Le joueur n'est pas liberté!",
+		-- jail addon end
+
+------
+STEP 4
+------
+-------------------
+ENGLISH TRANSLATION
+-------------------
+
+Add this after the line: 161
+
+		menu_put_in_jail_title = "Put in jail", -- jail addon
+		menu_arrest_title = "Arrest", -- jail addon
+
+------
+STEP 5
+------
+-------------------
+ENGLISH TRANSLATION
+-------------------
+
+Add this after the line: 182
+
+		-- jail addon
+		jail_arrest_notification_part_1 = "You got Arrested for ^1", -- send to the client after he got puted into the jail
+		jail_arrest_notification_part_2 = " seconds!",
+		jail_weapons_removed = "Your Weapons got removed for being Arrest!",
+		jail_not_cuffed = "Player need to be cuffed!",
+		-- jail addon end
+
+------
+STEP 6
+------
+
+Take a look in the client.txt

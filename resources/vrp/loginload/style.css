@@ -1,0 +1,236 @@
+/*------------------------------------*\
+	COMMONS CLASSES
+\*------------------------------------*/
+
+h1, h2, h3, h4, h5, h6
+{
+    font-family: 'Roboto Slab', serif;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    margin-bottom: 1.1em;
+}
+
+.features .container-fluid
+{
+    padding-top: 3.3em;
+    padding-bottom: 4.2em;
+}
+
+span.typcn::before, i.typcn::before
+{
+    font-size: 2em;
+}
+
+span.x2:before, i.x2:before
+{
+    font-size: 3.4em;
+}
+
+span.x3:before, i.x3:before
+{
+    font-size: 4.4em;
+}
+
+span.x4:before, i.x4:before
+{
+    font-size: 6em;
+}
+
+
+/*------------------------------------*\
+	HEADER
+\*------------------------------------*/
+
+header .container-fluid
+{
+    background-image: url('bg-en.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    padding-top: 36px;
+}
+
+.logo
+{
+    background: none;
+    border: 0px;
+}
+
+.jumbotron
+{
+    background: none;
+    text-align: center;
+}
+
+.jumbotron h1,
+.jumbotron h2,
+.jumbotron h3,
+.jumbotron h4,
+.jumbotron h5,
+.jumbotron h6,
+.jumbotron small
+{
+    color: #FFFFFF;
+}
+
+.jumbotron p
+{
+    color: #FFFFFF;
+    margin-bottom: 5%;
+}
+
+
+/*------------------------------------*\
+	SECTIONS
+\*------------------------------------*/
+
+.opaline
+{
+    padding-top: 3em;
+    padding-bottom: 3em;
+    background-color: rgba(100, 100, 100, 0.660);
+}
+
+.opaline h1,
+.opaline h2,
+.opaline h3,
+.opaline h4,
+.opaline h5,
+.opaline h6,
+.opaline p
+{
+    color: #FFFFFF;
+}
+
+.opaline .boxes
+{
+    margin-top: 30px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    border: 1px solid #FFF;
+}
+
+.letni
+{
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    bottom: 10%;
+
+    z-index: 5;
+
+    color: #fff;
+
+    font-family: "Segoe UI";
+}
+
+.letni p
+{
+    font-size: 22px;
+
+    margin-left: 3px;
+
+    margin-top: 0px;
+}
+
+.letni h2, .letni h3
+{
+    font-family: BankGothic;
+
+    text-transform: uppercase;
+
+    font-size: 50px;
+
+    margin: 0px;
+
+    display: inline-block;
+}
+
+.top
+{
+    color: #fff;
+
+    position: absolute;
+    top: 7%;
+    left: 5%;
+    right: 5%;
+}
+
+.top h1
+{
+    font-family: BankGothic;
+    font-size: 60px;
+
+    margin: 0px;
+}
+
+.top h2
+{
+    font-family: BankGothic;
+    font-size: 40px;
+
+    margin: 0px;
+
+    color: #ddd;
+}
+
+.loadbar
+{
+    width: 100%;
+    background-color: rgba(140, 140, 140, .9);
+    height: 20px;
+
+    margin-left: 2px;
+    margin-right: 3px;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    display: block;
+}
+
+.thingy
+{
+    width: 10%;
+    background-color: #eee;
+    height: 20px;
+
+    position: absolute;
+    left: 10%;
+}
+
+@keyframes blink {
+    0% {
+      opacity: .2;
+    }
+
+    20% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: .2;
+    }
+}
+
+.loading span {
+    animation-name: blink;
+    animation-duration: 1.4s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+}
+
+.loading span:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.loading span:nth-child(3) {
+    animation-delay: .4s;
+}

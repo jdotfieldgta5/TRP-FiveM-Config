@@ -1,0 +1,77 @@
+<html lang="en">
+    <head>
+        <link href="theme.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700,100' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Raleway:300,700,900,500' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/typicons/2.0.7/typicons.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    </head>
+    <body class="">
+      <div class="site-overlay"></div>
+        <header id="main">
+            <div class="container-fluid">
+                <!-- change the image in style.css to the class header .container-fluid [approximately row 50] -->
+                <div class="container">
+                    <div class="jumbotron">
+						<h1><strong>VRPLIFE</strong></h1>
+                        <h2>ROLEPLAY SERVER</h2>
+                    </div>
+                    <br>
+                        <div class="loadbar"><div class="thingy"></div></div>
+                        <p class="loading">Loading<font size="6"><span>.</span><span>.</span><span>.</span></font></p>
+                    </div>
+                    <script type="text/javascript">
+
+                        var count = 0;
+                        var thisCount = 0;
+                        const emoji = {
+                            INIT_BEFORE_MAP_LOADED: [ '🍉' ],
+                            INIT_AFTER_MAP_LOADED: [ '🍋', '🍊' ],
+                            INIT_SESSION: [ '🍐', '🍅', '🍆' ],
+                        };
+                        const handlers = {
+                            startInitFunctionOrder(data)
+                            {
+                                count = data.count;
+                                document.querySelector('.letni h3').innerHTML += emoji[data.type][data.order - 1] || '';
+                            },
+                            initFunctionInvoking(data)
+                            {
+                                document.querySelector('.thingy').style.left = '0%';
+                                document.querySelector('.thingy').style.width = ((data.idx / count) * 100) + '%';
+                            },
+                            startDataFileEntries(data)
+                            {
+                                count = data.count;
+                                document.querySelector('.letni h3').innerHTML += "\u{1f358}";
+                            },
+                            performMapLoadFunction(data)
+                            {
+                                ++thisCount;
+                                document.querySelector('.thingy').style.left = '0%';
+                                document.querySelector('.thingy').style.width = ((thisCount / count) * 100) + '%';
+                            },
+                            onLogLine(data)
+                            {
+                                document.querySelector('.letni p').innerHTML = data.message + "..!";
+                            }
+                        };
+                        window.addEventListener('message', function(e)
+                        {
+                            (handlers[e.data.eventName] || function() {})(e.data);
+                        });
+                    </script>
+                    <audio id="loadingscreen" autoplay loop >
+         				<source src="Loading.ogg" type="audio/ogg">
+    				</audio>
+					<script>
+     					var vid = document.getElementById("loadingscreen");
+     					vid.volume = 0.1
+    				</script>
+                </div>
+            </div>
+        </header>
+    </body>
+</html>

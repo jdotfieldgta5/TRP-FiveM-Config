@@ -1,0 +1,63 @@
+{
+  "admin": {
+    "enabled": true,
+    "flag": "b"
+  },
+  "announce": {
+    "enabled": true,
+    "flag": "i"
+  },
+  "car": {
+    "enabled": true,
+    "flag": "n"
+  },
+  "report": {
+    "enabled": true,
+    "flag": "*",
+    "seeFlag": "b"
+  },
+  "pos": {
+    "enabled": true,
+    "flag": "b"
+  },
+  "savepos": {
+    "enabled": true,
+    "flag": "b"
+  },
+  "noclip": {
+    "enabled": true,
+    "flag": "m"
+  },
+  "kick": {
+    "enabled": true,
+    "flag": "c"
+  },
+  "ban": {
+    "enabled": true,
+    "flag": "d"
+  },
+  "freeze": {
+    "enabled": true,
+    "flag": "b"
+  },
+  "bring": {
+    "enabled": true,
+    "flag": "b"
+  },
+  "slap": {
+    "enabled": true,
+    "flag": "b"
+  },
+  "tp": {
+    "enabled": true,
+    "flag": "b"
+  },
+  "die": {
+    "enabled": true,
+    "flag": "*"
+  },
+  "slay": {
+    "enabled": true,
+    "flag": "f"
+  }
+}
